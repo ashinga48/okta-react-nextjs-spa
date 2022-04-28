@@ -1,7 +1,7 @@
 {
-  "name": "@okta/okta-react",
+  "name": "@okta/okta-react-nextjs-spa",
   "version": "6.5.0",
-  "description": "React support for Okta",
+  "description": "NextJS React SPA static export support with Okta",
   "private": true,
   "scripts": {
     "banners": "node util/maintain-banners.js",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/okta/okta-react.git"
+    "url": "git+https://github.com/ashinga48/okta-react-nextjs-spa.git"
   },
   "keywords": [
     "oauth2"
@@ -32,9 +32,9 @@
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/okta/okta-react/issues"
+    "url": "https://github.com/ashinga48/okta-react-nextjs-spa/issues"
   },
-  "homepage": "https://github.com/okta/okta-react#readme",
+  "homepage": "https://github.com/ashinga48/okta-react-nextjs-spa#readme",
   "engines": {
     "node": ">=10.3",
     "yarn": "^1.7.0"

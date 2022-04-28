@@ -14,15 +14,6 @@ import * as React from 'react';
 import { AuthSdkError, AuthState, OktaAuth } from '@okta/okta-auth-js';
 import OktaContext, { OnAuthRequiredFunction, RestoreOriginalUriFunction } from './OktaContext';
 import OktaError from './OktaError';
-import { compare as compareVersions } from 'compare-versions';
-
-declare const AUTH_JS: {
-  minSupportedVersion: string;
-}
-
-declare const PACKAGE_NAME: string;
-declare const PACKAGE_VERSION: string;
-declare const SKIP_VERSION_CHECK: string;
 
 const Security: React.FC<{
   oktaAuth: OktaAuth,
@@ -57,7 +48,7 @@ const Security: React.FC<{
 
     // Add okta-react userAgent
     if (oktaAuth._oktaUserAgent) {
-      oktaAuth._oktaUserAgent.addEnvironment(`${PACKAGE_NAME}/${PACKAGE_VERSION}`);
+      // oktaAuth._oktaUserAgent.addEnvironment(`${PACKAGE_NAME}/${PACKAGE_VERSION}`);
     } else {
       console.warn('_oktaUserAgent is not available on auth SDK instance. Please use okta-auth-js@^5.3.1 .');
     }
@@ -89,19 +80,6 @@ const Security: React.FC<{
 
   if (!oktaAuth._oktaUserAgent) {
     console.warn('_oktaUserAgent is not available on auth SDK instance. Please use okta-auth-js@^5.3.1 .');
-  }
-  else {
-    // use SKIP_VERSION_CHECK flag to control version check in tests
-    // OKTA-465157: remove SKIP_VERSION_CHECK
-    const isAuthJsSupported = SKIP_VERSION_CHECK === '1' ||
-      compareVersions(oktaAuth._oktaUserAgent.getVersion(), AUTH_JS.minSupportedVersion, '>=');
-    if (!isAuthJsSupported) {
-      const err = new AuthSdkError(`
-        Passed in oktaAuth is not compatible with the SDK,
-        minimum supported okta-auth-js version is ${AUTH_JS.minSupportedVersion}.
-      `);
-      return <OktaError error={err} />;
-    }
   }
 
   return (
