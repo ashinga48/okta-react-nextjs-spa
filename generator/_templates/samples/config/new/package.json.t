@@ -9,7 +9,7 @@ force: true
   "version": "0.3.0",
   "scripts": {
     "prestart": "vite build",
-    "start": "vite preview --port 8080", 
+    "start": "vite preview", 
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -17,7 +17,9 @@ force: true
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+<% if (reactRouterDomVersion !== 'false') { -%>
     "react-router-dom": "<%= reactRouterDomVersion %>",
+<% } -%>
     "@okta/okta-auth-js": "^<%= oktaAuthJsVersion %>",
 <% if (useSiw === 'true') { -%>
     "@okta/okta-signin-widget": "^<%= siwVersion %>",
@@ -28,6 +30,10 @@ force: true
 <% } -%>
 <% if (usePolyfill === 'true') { -%>
     "text-encoding": "0.7.0",
+<% } -%>
+<% if (reachRouterVersion !== 'false') { -%>
+    "@reach/router":"<%= reachRouterVersion %>",
+    "@types/reach__router": "<%= reachRouterVersion %>",
 <% } -%>
     "@okta/okta-react": "*"
   },
